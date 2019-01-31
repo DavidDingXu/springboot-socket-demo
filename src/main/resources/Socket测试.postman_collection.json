@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "736c14d3-6dc1-42d7-ac52-ef990034a044",
+		"name": "Socket测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "服务端",
+			"item": [
+				{
+					"name": "获得当前连接用户列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ip}}/socket-server/get-users",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"socket-server",
+								"get-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发送一个消息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":\"dingxu2\",\n\t\"message\":\"app打开视频啦\"\n}"
+						},
+						"url": {
+							"raw": "{{ip}}/socket-server/send-message",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"socket-server",
+								"send-message"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "客户端",
+			"item": [
+				{
+					"name": "开始一个socket客户端",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":\"dingxu1\"\n}"
+						},
+						"url": {
+							"raw": "{{ip}}/socket-client/start",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"socket-client",
+								"start"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发送一个消息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":\"dingxu1\",\n\t\"message\":\"app收到消息啦\"\n}"
+						},
+						"url": {
+							"raw": "{{ip}}/socket-client/send-message",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"socket-client",
+								"send-message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "关闭一个socket客户端",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\":\"dingxu1\"\n}"
+						},
+						"url": {
+							"raw": "{{ip}}/socket-client/close",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"socket-client",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查看已开启的客户端",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{ip}}/socket-client/get-users",
+							"host": [
+								"{{ip}}"
+							],
+							"path": [
+								"socket-client",
+								"get-users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
